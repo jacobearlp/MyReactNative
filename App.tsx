@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { View } from "react-native";
-import TodoView from "./src/containers/TodoView";
-import FoodDetailView from "./src/containers/FoodDetailView";
+import { View, Text } from "react-native";
 
 export default function App() {
   return (
-    <FoodDetailView />
+    <View>
+      <Text>Hello world!</Text>
+    </View>
   );
 }
