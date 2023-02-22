@@ -1,8 +1,0 @@
-{
-  "name": "MyReactNative Name",
-  "displayName": "MyReactNative DisplayName",
-  "expo": { 
-    "name": "MyReactNative Name",
-    "slug": "my-app"
-  }
-}
