@@ -7,7 +7,7 @@ import CustomNavigationBarView from './src/components/CustomNavigationBarView';
 export default function App() {
   return (
     <SafeAreaProvider>
-        <SafeAreaView>
+        <SafeAreaView style={{flex: 1}}>
             <TodoScreen />
         </SafeAreaView>
     </SafeAreaProvider>

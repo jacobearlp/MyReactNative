@@ -1,49 +1,38 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, FlatList, ScrollView } from "react-native";
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
+import { View, StyleSheet, FlatList, ScrollView } from "react-native";
 import CustomNavigationBarView from "../components/CustomNavigationBarView";
+import TodoFormView from "../components/TodoFormView";
 import TodoItemView from "../components/TodoItemView";
 
 export default function TodoScreen() {
-    const [todos, setTodos] = useState([
-        {todo: "this is a sample todo", id: '1'},
-        {todo: "this is a sample todo", id: '2'},
-        {todo: "this is a sample todo", id: '3'},
-        {todo: "this is a sample todo", id: '4'},
-        {todo: "this is a sample todo", id: '5'},
-        {todo: "this is a sample todo", id: '6'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '7'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '8'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '9'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '10'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '11'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '12'},
-        // {todo: "this is a sample todoasd flkasdflak jdflkajdsfalk sjfalkfjas", id: '13'},
-        {todo: "ahahahhaha sjfalkfjas", id: '14'},
-    ]);
+    const [todos, setTodos] = useState([]);
+
+    function todoFormOnSubmitHandler(textInput) {
+        let newTodo = {todo: textInput, id: Math.random() };
+        setTodos((currentTodos) => [newTodo, ...currentTodos]);
+    }
 
     return (
         <View style={styles.container}> 
             <CustomNavigationBarView title="Todo"/>
-            <ScrollView>
-                <View style={styles.todoListContainer}>
-                    <FlatList data={todos}
-                        renderItem={({item}) => (
-                            <TodoItemView item={item}/>
-                    )} />
-                </View>
-            </ScrollView>
+            <TodoFormView onSubmit={todoFormOnSubmitHandler}/>
+            <View style={styles.listContainer}>
+                <FlatList 
+                    data={todos}
+                    renderItem={({item}) => (
+                        <TodoItemView item={item}/>
+                    )}
+                />
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: { 
-        // flex: 1,
-        // backgroundColor: 'blue'
+        flex: 1,
     },
-    todoListContainer: { 
-        // flex: 1,
+    listContainer: { 
+        flex: 1
     }
 })

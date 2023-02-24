@@ -2,11 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons';
 
-export default function TodoItemView({item}) { 
-
+export default function TodoItemView(props) {
     return (
         <View style={styles.container}>
-            <Text style={styles.textContainer}>{item.todo}</Text>
+            <Text style={styles.textContainer}>{props.item.todo}</Text>
             <TouchableOpacity style={styles.deleteContainer}>
                 <MaterialIcons name="delete" size={20} color={'red'}/>
             </TouchableOpacity>
