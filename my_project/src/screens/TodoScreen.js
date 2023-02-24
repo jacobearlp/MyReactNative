@@ -8,8 +8,12 @@ export default function TodoScreen() {
     const [todos, setTodos] = useState([]);
 
     function todoFormOnSubmitHandler(textInput) {
-        let newTodo = {todo: textInput, id: Math.random() };
+        let newTodo = {todo: textInput, id: Math.random().toString() };
         setTodos((currentTodos) => [newTodo, ...currentTodos]);
+    }
+
+    function todoOnDeleteHandler(item) {
+        setTodos((currentTodos) => currentTodos.filter((currentItem) => currentItem.id != item.id));
     }
 
     return (
@@ -20,7 +24,7 @@ export default function TodoScreen() {
                 <FlatList 
                     data={todos}
                     renderItem={({item}) => (
-                        <TodoItemView item={item}/>
+                        <TodoItemView item={item} onDelete={todoOnDeleteHandler}/>
                     )}
                 />
             </View>
